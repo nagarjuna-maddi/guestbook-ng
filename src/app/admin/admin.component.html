@@ -1,0 +1,28 @@
+<h2> Manage Guest Entries</h2>
+
+<div class="terminal">
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th> USERNAME</th>
+            <th> COMMENT</th>
+            <th> IMAGE </th>
+            <th> EMAIL</th>
+            <th> ACTIONS </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let guestEntry of guestEntryList" >
+            <td> {{ guestEntry.comment }} </td>
+            <td> {{ guestEntry.comment }} </td>
+            <td> {{ guestEntry.image }} </td>
+            <td> {{ guestEntry.image }} </td>
+            <td>
+                <button (click) = "updateGuestEntry(guestEntry.guestEntryId)" class = "btn btn-info"> Update</button>
+                <button (click) = "deleteGuestEntry(guestEntry.guestEntryId)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+

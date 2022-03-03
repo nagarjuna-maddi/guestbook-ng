@@ -1,7 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './admin/admin.component';
+import { GuestentryComponent } from './guestentry/guestentry.component';
+import { LoginComponent } from './login/login.component';
+import { UpdateGuestEntryComponent } from './update-guest-entry/update-guest-entry.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: '',  component: LoginComponent, pathMatch: 'full'},
+  {path: 'guestEntryForm', component: GuestentryComponent},
+  {path: 'adminPage', component: AdminComponent},
+  {path: 'update-guest-entry/:id', component: UpdateGuestEntryComponent}
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
