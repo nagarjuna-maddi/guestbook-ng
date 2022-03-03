@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { GuestentryComponent } from './guestentry/guestentry.component';
 import { UpdateGuestEntryComponent } from './update-guest-entry/update-guest-entry.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { UpdateGuestEntryComponent } from './update-guest-entry/update-guest-ent
     AppRoutingModule,
     FormsModule,
     HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

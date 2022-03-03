@@ -1,22 +1,31 @@
+<h2>Guest Entry</h2>
+
 
 <div class="terminal">
 
-<div class="col-md-6 offset-md-3">
-    <h3> Guest Entry </h3>
-    <form (ngSubmit)="onSubmit()">
+    <div class="col-md-6 offset-md-3">
+        <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
 
-        <div class="form-group">
-            <label> Write a comment : </label>
-            <textarea class="form-control" id="comment" [(ngModel)]="guestEntry.comment" name="comment">its good</textarea>
-        </div>
+                <input type="radio" name="guestInputType" value="comment" (click)="textClick()" checked /> Write a
+                comment :<br>
 
-        <div class="form-group">
-            <label> Upload an Image : </label>
-            <input type="file" class="form-control" id="image" [(ngModel)]="guestEntry.image" name="image">
-        </div>
 
-        <button class="btn btn-success" type="submit">Save Entry</button>
+                <textarea [disabled]="textBoxDisabled" class="form-control" id="comment" cols="200" rows="5"
+                    [(ngModel)]="guestEntry.comment" name="comment"></textarea>
+            </div>
 
-    </form>
-</div>
+            <div class="form-group">
+                <input type="radio" name="guestInputType" value="image" (click)="imageClick()" /> Upload an Image : <br>
+
+
+                <input [disabled]="imageBoxDisabled" type="file" class="form-control" id="image"
+                    [(ngModel)]="guestEntry.image" name="image" (change)="onFileChanged($event)">
+            </div>
+
+            <button class="btn btn-success" type="submit">Save Entry</button>&nbsp;&nbsp;
+            <a href="/guestPage">View My Comments</a>
+
+        </form>
+    </div>
 </div>

@@ -1,1 +1,21 @@
-<p>guest works!</p>
+<h2> View My Comments</h2>
+
+<div class="terminal">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th> COMMENT</th>
+                <th> IMAGE </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let guestEntry of guestEntryList">
+                <td> {{ guestEntry.comment }} </td>
+                <td> <a href="http://localhost:8080/api/guestapp/admin/downloadImage/{{guestEntry.guestEntryId}}">
+                        {{guestEntry.imageName}} </a></td>
+            </tr>
+        </tbody>
+
+    </table>
+    <button (click)="addNewComment()" class="btn btn-success" type="submit">Add New Comment</button>
+</div>

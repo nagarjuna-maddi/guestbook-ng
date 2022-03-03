@@ -24,8 +24,12 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     console.log(this.login);
 
+
     this.loginService.loginUser(this.login).subscribe(data => {
       console.log('data********* = ' + data);
+
+
+
       if (this.login.userType == 'Guest') {
         this.loadGuestEntryForm();
       } else if (this.login.userType == 'Administrator') {

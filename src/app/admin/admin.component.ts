@@ -20,27 +20,49 @@ export class AdminComponent implements OnInit {
     this.getGuestEntryList();
   }
 
-  private getGuestEntryList(){
+  private getGuestEntryList() {
     this.adminService.getGuestEntryList().subscribe(data => {
       this.guestEntryList = data;
     });
   }
 
-  approveGuestEntry(id: number){
-    console.log('Approve Id : '+id);
-    this.router.navigate(['approve-guest-entry', id]);
+  approveGuestEntry(id: number) {
+    console.log('Approve Id : ' + id);
+    this.adminService.approveGuestEntryById(id, 'Approved').subscribe(data => {
+      console.log(data);
+      this.getGuestEntryList();
+    });
   }
 
-  updateGuestEntry(id: number){
-    console.log('Update Id : '+id);
-    this.router.navigate(['update-guest-entry', id]);
-  }
-
-  deleteGuestEntry(id: number){
-    this.adminService.deleteGuestEntry(id).subscribe( data => {
+  rejectGuestEntry(id: number) {
+    console.log('Reject Id : ' + id);
+    this.adminService.rejectGuestEntryById(id, 'Rejected').subscribe(data => {
       console.log(data);
       this.getGuestEntryList();
     })
+  }
+
+  updateGuestEntry(id: number) {
+    console.log('Update Id : ' + id);
+    this.router.navigate(['update-guest-entry', id]);
+  }
+
+  deleteGuestEntry(id: number) {
+    this.adminService.deleteGuestEntry(id).subscribe(data => {
+      console.log(data);
+      this.getGuestEntryList();
+    })
+  }
+
+  downloadImage(id: number) {
+    console.log("download id == " + id);
+
+    this.adminService.downloadImage(id).subscribe(data => {
+      console.log(data);
+      this.getGuestEntryList();
+    })
+
+
   }
 
 }

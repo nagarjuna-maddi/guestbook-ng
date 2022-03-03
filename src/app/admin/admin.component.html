@@ -1,29 +1,40 @@
 <h2> Manage Guest Entries</h2>
 
 <div class="terminal">
-<table class = "table table-striped">
-    <thead>
-        <tr>
-            <th> USERNAME</th>
-            <th> COMMENT</th>
-            <th> IMAGE </th>
-            <th> EMAIL</th>
-            <th> ACTIONS </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor = "let guestEntry of guestEntryList" >
-            <td> {{ guestEntry.comment }} </td>
-            <td> {{ guestEntry.comment }} </td>
-            <td> {{ guestEntry.image }} </td>
-            <td> {{ guestEntry.image }} </td>
-            <td>
-                <button (click) = "approveGuestEntry(guestEntry.guestEntryId)" class = "btn btn-info"> Approve </button>
-                <button (click) = "updateGuestEntry(guestEntry.guestEntryId)" class = "btn btn-info"> Update</button>
-                <button (click) = "deleteGuestEntry(guestEntry.guestEntryId)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
-</div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th> USERNAME</th>
+                <th> COMMENT</th>
+                <th> IMAGE </th>
+                <th> ACTIONS </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let guestEntry of guestEntryList">
+                <td> {{ guestEntry.userId }} </td>
+                <td> {{ guestEntry.comment }} </td>
+                <td> <a href="http://localhost:8080/api/guestapp/admin/downloadImage/{{guestEntry.guestEntryId}}">
+                        {{guestEntry.imageName}} </a></td>
+                <td>
+                    <span *ngIf="guestEntry.status == 'Pending'  || guestEntry.status == 'Rejected'">
+                        <button (click)="approveGuestEntry(guestEntry.guestEntryId)" class="btn btn-success"> Approve
+                        </button>
+                    </span>
+                    <span *ngIf="guestEntry.status == 'Approved'">
+                        <button (click)="rejectGuestEntry(guestEntry.guestEntryId)" class="btn btn-danger"
+                            style="margin-left: 14px"> Reject </button>
+                    </span>
 
+                    <span *ngIf="guestEntry.comment">
+                        <button (click)="updateGuestEntry(guestEntry.guestEntryId)" class="btn btn-info"
+                            style="margin-left: 10px"> Update</button>
+                    </span>
+
+                    <button (click)="deleteGuestEntry(guestEntry.guestEntryId)" class="btn btn-danger"
+                        style="margin-left: 10px"> Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

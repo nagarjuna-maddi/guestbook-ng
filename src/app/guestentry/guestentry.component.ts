@@ -12,25 +12,71 @@ export class GuestentryComponent implements OnInit {
 
   guestEntry: GuestEntry = new GuestEntry();
 
+  public file: any;
+  public fileName: string = "";
+
+  textBoxDisabled = false;
+  imageBoxDisabled = true;
+
+  textClick() {
+    this.guestEntry.image = [];
+    this.textBoxDisabled = false;
+    this.imageBoxDisabled = true;
+  }
+
+  imageClick() {
+    this.guestEntry.comment = "";
+    this.textBoxDisabled = true;
+    this.imageBoxDisabled = false;
+  }
+
 
   constructor(private guestEntryService: GuestEntryService,
     private router: Router) {
-
-      console.log('GuestentryComponent constructor2');
-     }
+    console.log('GuestentryComponent constructor2');
+  }
 
   ngOnInit(): void {
     console.log('GuestentryComponent ngOnInit2');
   }
 
   onSubmit() {
-    console.log("onsubmit");
 
-    this.guestEntryService.saveGuestEntry(this.guestEntry).subscribe( data =>{
-      console.log("save data : "+data);
-    },
-    error => console.log(error));
+
+    this.guestEntry.status = "Pending";
+
+    if (this.imageBoxDisabled) {
+      console.log("onsubmit1 text");
+
+      //this.guestEntry.image = this.files[0];
+      this.guestEntryService.saveGuestEntry(this.guestEntry).subscribe(data => {
+        this.router.navigate(['/guestPage']);
+      },
+        error => console.log(error));
+    } else if (this.textBoxDisabled) {
+      console.log("onsubmit2 image");
+
+      this.fileName = this.file.name;
+
+      const formData = new FormData();
+
+      formData.append("image", this.file);
+
+      this.guestEntryService.saveGuestImage(formData).subscribe(data => {
+        this.router.navigate(['/guestPage']);
+      },
+        error => console.log(error));
+    }
+
 
   }
+
+  onFileChanged(event: any) {
+    this.file = event.target.files[0];
+
+
+  }
+
+
 
 }

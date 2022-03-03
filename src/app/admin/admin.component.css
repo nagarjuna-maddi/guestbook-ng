@@ -1,8 +1,8 @@
 .terminal {
     position: absolute;
-    left: 400px;
+    left: 200px;
     width: 180%;
-    max-width: 600px;
+    max-width: 1000px;
     border-radius: 6px;
     padding-top: 45px;
     margin-top: 8px;
@@ -16,7 +16,7 @@
     top: 0;
     left: 0;
     height: 4px;
-    background: rgb(58, 58, 58);
+    background: rgba(93, 144, 173, 0.767);
     color: #c2c3c4;
     width: 100%;
     font-size: 2rem;
