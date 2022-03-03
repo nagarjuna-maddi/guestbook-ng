@@ -22,8 +22,14 @@ export class GuestEntryService {
     console.log("In GuestEntryService .." + this.baseURL + 'saveGuestImage');
     console.log(formData);
     return this.httpClient.post(this.baseURL + 'saveGuestImage', formData);
-
   }
+
+
+  viewAllApprovedGuestEntries(id: number): Observable<GuestEntry[]> {
+    console.log('viewAllApprovedGuestEntries...guest'+ id);
+    return this.httpClient.get<GuestEntry[]>(this.baseURL + 'viewAllApprovedGuestEntries/' + id);
+  }
+
 
   
 

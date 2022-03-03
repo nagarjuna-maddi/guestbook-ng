@@ -50,7 +50,7 @@ export class GuestentryComponent implements OnInit {
 
       //this.guestEntry.image = this.files[0];
       this.guestEntryService.saveGuestEntry(this.guestEntry).subscribe(data => {
-        this.router.navigate(['/guestPage']);
+        this.router.navigate(['/guestPage/'+this.guestEntry.userId]);
       },
         error => console.log(error));
     } else if (this.textBoxDisabled) {
@@ -63,7 +63,7 @@ export class GuestentryComponent implements OnInit {
       formData.append("image", this.file);
 
       this.guestEntryService.saveGuestImage(formData).subscribe(data => {
-        this.router.navigate(['/guestPage']);
+        this.router.navigate(['/guestPage/'+this.guestEntry.userId]);
       },
         error => console.log(error));
     }
