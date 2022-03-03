@@ -18,6 +18,7 @@
             <td> {{ guestEntry.image }} </td>
             <td> {{ guestEntry.image }} </td>
             <td>
+                <button (click) = "approveGuestEntry(guestEntry.guestEntryId)" class = "btn btn-info"> Approve </button>
                 <button (click) = "updateGuestEntry(guestEntry.guestEntryId)" class = "btn btn-info"> Update</button>
                 <button (click) = "deleteGuestEntry(guestEntry.guestEntryId)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
             </td>

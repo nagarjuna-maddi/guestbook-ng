@@ -22,6 +22,19 @@ export class AdminService {
 
   deleteGuestEntry(id: number): Observable<Object> {
     console.log('deleteGuestEntry...');
-    return this.httpClient.delete(this.baseURL+'/'+id);
+    return this.httpClient.delete(this.baseURL+'deleteGuestEntry/'+id);
   }
+
+  getGuestEntryById(id : number): Observable<GuestEntry> {
+    console.log('getGuestEntryById...admin --- '+this.baseURL+'getGuestEntryById/'+id);
+    return this.httpClient.get<GuestEntry>(this.baseURL+'getGuestEntryById/'+id);
+  }
+
+  
+
+  updateGuestEntry(id: number, guestEntry: GuestEntry): Observable<Object>{
+    return this.httpClient.put(this.baseURL+'updateGuestEntry/'+id, guestEntry);
+  }
+
+
 }

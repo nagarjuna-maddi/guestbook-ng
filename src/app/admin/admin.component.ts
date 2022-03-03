@@ -26,7 +26,13 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  approveGuestEntry(id: number){
+    console.log('Approve Id : '+id);
+    this.router.navigate(['approve-guest-entry', id]);
+  }
+
   updateGuestEntry(id: number){
+    console.log('Update Id : '+id);
     this.router.navigate(['update-guest-entry', id]);
   }
 

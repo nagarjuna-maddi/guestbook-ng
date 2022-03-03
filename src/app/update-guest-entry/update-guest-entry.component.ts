@@ -20,20 +20,24 @@ export class UpdateGuestEntryComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
 
+    console.log('this.id = '+this.id);
+
     this.adminService.getGuestEntryById(this.id).subscribe(data => {
+      console.log('UpdateGuestEntryComponent data = '+data);
       this.guestEntry = data;
     }, error => console.log(error));
   }
 
   onSubmit(){
+    console.log('onSubmit.....');
     this.adminService.updateGuestEntry(this.id, this.guestEntry).subscribe( data =>{
-      this.goToEmployeeList();
+      this.goToAdminPage();
     }
     , error => console.log(error));
   }
 
-  goToEmployeeList(){
-    this.router.navigate(['/employees']);
+  goToAdminPage(){
+    this.router.navigate(['/adminPage']);
   }
 
 }
