@@ -5,17 +5,24 @@
         <thead>
             <tr>
                 <th> USERNAME</th>
-                <th> COMMENT</th>
-                <th> IMAGE </th>
+                <th> COMMENTS / IMAGE</th>
                 <th> ACTIONS </th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let guestEntry of guestEntryList">
                 <td> {{ guestEntry.userId }} </td>
-                <td> {{ guestEntry.comment }} </td>
-                <td> <a href="http://localhost:8080/api/guestapp/admin/downloadImage/{{guestEntry.guestEntryId}}">
-                        {{guestEntry.imageName}} </a></td>
+                <td>
+                    <span *ngIf="guestEntry.comment != ''">
+                        {{ guestEntry.comment }}
+                    </span>
+
+                    <span *ngIf="guestEntry.imageName != ''">
+                        Click to download Image : <a
+                            href="http://localhost:8080/api/guestapp/admin/downloadImage/{{guestEntry.guestEntryId}}">
+                            {{guestEntry.imageName}} </a>
+                    </span>
+                </td>
                 <td>
                     <span *ngIf="guestEntry.status == 'Pending'  || guestEntry.status == 'Rejected'">
                         <button (click)="approveGuestEntry(guestEntry.guestEntryId)" class="btn btn-success"> Approve

@@ -4,15 +4,23 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th> COMMENT</th>
-                <th> IMAGE </th>
+                <th> COMMENTS / IMAGE</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let guestEntry of guestEntryList">
-                <td> {{ guestEntry.comment }} </td>
-                <td> <a href="http://localhost:8080/api/guestapp/admin/downloadImage/{{guestEntry.guestEntryId}}">
-                        {{guestEntry.imageName}} </a></td>
+
+                <td>
+                    <span *ngIf="guestEntry.comment != ''">
+                        {{ guestEntry.comment }}
+                    </span>
+
+                    <span *ngIf="guestEntry.imageName != ''">
+                        Click to download Image : <a
+                            href="http://localhost:8080/api/guestapp/admin/downloadImage/{{guestEntry.guestEntryId}}">
+                            {{guestEntry.imageName}} </a>
+                    </span>
+                </td>
             </tr>
         </tbody>
 
