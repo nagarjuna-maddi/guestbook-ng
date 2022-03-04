@@ -14,11 +14,19 @@ export class LoginService {
 
   constructor(private httpClient: HttpClient) { }
 
-  loginUser(login: Login): Observable<Object> {
-    console.log("In login service..");
+  // loginUser(login: Login): Observable<Object> {
+  //   console.log("In login service..");
 
-    console.log(this.baseURL+'loginUser');
-    return this.httpClient.get(this.baseURL+'loginUser', {responseType: 'text'});
+  //   console.log(this.baseURL + 'loginUser');
+  //   return this.httpClient.get(this.baseURL + 'loginUser', { responseType: 'text' });
+  // }
+
+  validateUser(login: Login): Observable<Login> {
+    console.log("In validateUser  ..");
+
+    console.log(this.baseURL + 'validateUser');
+    return this.httpClient.post<Login>(this.baseURL + 'validateUser', login);
   }
+
 
 }

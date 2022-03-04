@@ -4,6 +4,8 @@ export class GuestEntry {
 
     userId: number = 0;
 
+    userName: string = "";
+
     comment: string = "";
 
     image: any[] = [];

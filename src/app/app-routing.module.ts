@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'guestEntryForm', component: GuestentryComponent },
   { path: 'adminPage', component: AdminComponent },
   { path: 'update-guest-entry/:id', component: UpdateGuestEntryComponent },
-  { path: 'guestPage/:id', component: GuestComponent }
+  { path: 'guestPage', component: GuestComponent }
 
 ];
 

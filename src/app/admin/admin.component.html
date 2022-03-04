@@ -11,7 +11,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let guestEntry of guestEntryList">
-                <td> {{ guestEntry.userId }} </td>
+                <td> {{ guestEntry.userName }} </td>
                 <td>
                     <span *ngIf="guestEntry.comment != ''">
                         {{ guestEntry.comment }}
@@ -30,16 +30,16 @@
                     </span>
                     <span *ngIf="guestEntry.status == 'Approved'">
                         <button (click)="rejectGuestEntry(guestEntry.guestEntryId)" class="btn btn-danger"
-                            style="margin-left: 14px"> Reject </button>
+                            style="width: 80px;background-color: rgb(240, 118, 81);"> Reject </button>
                     </span>
 
                     <span *ngIf="guestEntry.comment">
                         <button (click)="updateGuestEntry(guestEntry.guestEntryId)" class="btn btn-info"
-                            style="margin-left: 10px"> Update</button>
+                            style="margin-left: 10px;width: 80px"> Update</button>
                     </span>
 
                     <button (click)="deleteGuestEntry(guestEntry.guestEntryId)" class="btn btn-danger"
-                        style="margin-left: 10px"> Delete</button>
+                        style="margin-left: 10px;width: 80px"> Delete</button>
                 </td>
             </tr>
         </tbody>

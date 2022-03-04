@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GuestEntry } from '../model/guest-entry';
+import { Login } from '../model/login';
 import { AdminService } from '../service/admin.service';
 import { GuestEntryService } from '../service/guest-entry.service';
 
@@ -11,7 +12,7 @@ import { GuestEntryService } from '../service/guest-entry.service';
 })
 export class GuestComponent implements OnInit {
 
-  id : number = 0;
+  login : Login = new Login();
 
   guestEntryList: GuestEntry[] = [];
 
@@ -21,21 +22,27 @@ export class GuestComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.id = this.route.snapshot.params['id'];
+    this.login.userId =  this.route.snapshot.queryParams['userId'];
+    this.login.userName =  this.route.snapshot.queryParams['userName'];
+    this.login.userType =  this.route.snapshot.queryParams['userType'];
+    this.login.emailId =  this.route.snapshot.queryParams['emailId'];
+
+    console.log('login info in GuestComponent');
+    console.log(this.login);
 
 
     this.getGuestEntryList();
   }
 
   private getGuestEntryList() {
-    this.guestEntryService.viewAllApprovedGuestEntries(this.id).subscribe(data => {
+    this.guestEntryService.viewAllApprovedGuestEntries(this.login.userId).subscribe(data => {
       console.log('viewAllApprovedGuestEntries..component');
       this.guestEntryList = data;
     });
   }
 
   addNewComment() {
-    this.router.navigate(['/guestEntryForm']);
+    this.router.navigate(['/guestEntryForm'],{queryParams: this.login});
   }
 
 

@@ -22,6 +22,8 @@ export class AdminComponent implements OnInit {
 
   private getGuestEntryList() {
     this.adminService.getGuestEntryList().subscribe(data => {
+      console.log('data user join');
+      console.log(data);
       this.guestEntryList = data;
     });
   }
